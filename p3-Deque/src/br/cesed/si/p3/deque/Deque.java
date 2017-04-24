@@ -21,7 +21,7 @@ public class Deque{
 	}
 
 	/**
-	 * Doubles the stack size
+	 * Doubles the deque size
 	 */
 	private void duplicateSize(){
 		Object[] copiaDeque = new Object[myDeque.length * DOBRO];
