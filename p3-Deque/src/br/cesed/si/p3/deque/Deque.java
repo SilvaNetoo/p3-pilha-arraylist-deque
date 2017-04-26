@@ -20,15 +20,25 @@ public class Deque{
 		myDeque = new Object[size];
 	}
 
+	public int size(){
+		int counter = 0;
+		for (int i = 0; i < myDeque.length; i++) {
+			if(myDeque[i] != null){
+				counter++;
+			}
+		}
+		return counter;
+	}
+	
 	/**
 	 * Doubles the deque size
 	 */
 	private void duplicateSize(){
-		Object[] copiaDeque = new Object[myDeque.length * DOBRO];
+		Object[] copyDeque = new Object[myDeque.length * DOBRO];
 		for(int i = 0; i < myDeque.length; i++){
-			copiaDeque[i] = myDeque[i];
+			copyDeque[i] = myDeque[i];
 		}
-		myDeque = copiaDeque;
+		myDeque = copyDeque;
 	}
 
 	/**
@@ -51,14 +61,15 @@ public class Deque{
 		if(inserted == myDeque.length){
 			duplicateSize();
 		}
-		Object[] copiaMyDeque = new Object[myDeque.length];
+		Object[] copyMyDeque = new Object[myDeque.length];
 
 		for(int i = inserted; i > myDeque.length; i--){
-			copiaMyDeque[i+1] = myDeque[i];
+			copyMyDeque[i+1] = myDeque[i];
 		}
-		myDeque = copiaMyDeque;
+		myDeque = copyMyDeque;
 		
 		myDeque[0] = obj;
+		inserted++;
 	}
 
 	/**
@@ -72,11 +83,12 @@ public class Deque{
 	 * Remove the object in first position of deque
 	 */
 	public void removeInit(){
-		Object[] copiaMyDeque = new Object[myDeque.length];
+		Object[] copyMyDeque = new Object[myDeque.length];
 		for(int i = inserted; i > 0; i--){
-			copiaMyDeque[i-1] = myDeque[i];
+			copyMyDeque[i-1] = myDeque[i];
 		}
-		myDeque = copiaMyDeque;
+		myDeque = copyMyDeque;
+		inserted--;
 	}
 	
 	/**
